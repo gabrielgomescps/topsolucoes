@@ -37,12 +37,11 @@ export function WhatsappFab() {
       aria-label="Falar no WhatsApp com a Top Soluções"
       aria-hidden={oculto}
       tabIndex={oculto ? -1 : undefined}
-      className={`fixed right-[clamp(14px,3vw,26px)] bottom-[calc(clamp(18px,3vw,28px)+env(safe-area-inset-bottom,0px))] z-[70] inline-flex items-center gap-2 rounded-full bg-natural py-3.5 pr-[22px] pl-4 text-[13px] font-semibold tracking-[0.06em] text-white uppercase shadow-card transition-opacity duration-200 hover:bg-forest ${
+      className={`fixed right-[clamp(14px,3vw,26px)] bottom-[calc(clamp(18px,3vw,28px)+env(safe-area-inset-bottom,0px))] z-[70] flex size-10 items-center justify-center rounded-full bg-[#25D366] text-white shadow-card transition-opacity duration-200 hover:bg-[#1DA851] ${
         oculto ? 'pointer-events-none opacity-0' : 'opacity-100'
       }`}
     >
-      <IconeWhatsapp className="size-4" />
-      WhatsApp
+      <IconeWhatsapp className="size-5" />
     </a>
   )
 }

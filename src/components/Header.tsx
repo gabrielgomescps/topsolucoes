@@ -2,27 +2,13 @@ import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router'
 import { CONTATO, EMPRESA } from '../content/site'
 import { WA_ORCAMENTO } from '../lib/whatsapp'
-import { IconeWhatsapp } from './IconeWhatsapp'
+import { BotaoWhatsappCirculo } from './BotaoWhatsappCirculo'
 
 const NAV = [
   { to: '/', rotulo: 'Início' },
   { to: '/servicos', rotulo: 'Serviços' },
   { to: '/contato', rotulo: 'Contato' },
 ] as const
-
-function BotaoWhatsapp({ className = 'inline-flex' }: { className?: string }) {
-  return (
-    <a
-      href={WA_ORCAMENTO}
-      target="_blank"
-      rel="noopener"
-      aria-label="Falar no WhatsApp"
-      className={`size-10 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white transition-colors hover:bg-[#1DA851] ${className}`}
-    >
-      <IconeWhatsapp className="size-5" />
-    </a>
-  )
-}
 
 function Marca() {
   return (
@@ -79,7 +65,7 @@ export function Header() {
           {CONTATO.telefoneExibicao}
         </a>
 
-        <BotaoWhatsapp className="hidden md:inline-flex" />
+        <BotaoWhatsappCirculo className="hidden md:inline-flex" />
 
         <a
           href={WA_ORCAMENTO}
@@ -150,7 +136,7 @@ export function Header() {
               </NavLink>
             ))}
             <div className="my-4 flex items-center gap-3">
-              <BotaoWhatsapp />
+              <BotaoWhatsappCirculo />
               <a
                 href={WA_ORCAMENTO}
                 target="_blank"
