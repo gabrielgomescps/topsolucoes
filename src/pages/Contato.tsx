@@ -299,7 +299,11 @@ export function Contato() {
               <Erro campo="mensagem" />
             </label>
 
-            <button type="submit" className="btn btn-primary w-full">
+            <button
+              type="submit"
+              data-oculta-whatsapp-fab
+              className="btn btn-primary w-full"
+            >
               Enviar pelo WhatsApp
             </button>
 
