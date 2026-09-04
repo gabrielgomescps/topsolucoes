@@ -160,10 +160,6 @@ export function Home() {
               key={servico.titulo}
               className="card card-hover p-[clamp(22px,2.5vw,30px)]"
             >
-              <span
-                aria-hidden="true"
-                className="mb-[22px] block h-[3px] w-8 bg-natural"
-              />
               <h3 className="h-card">{servico.titulo}</h3>
               <p className="body-sm mt-3">{servico.texto}</p>
             </article>
