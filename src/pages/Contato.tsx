@@ -157,7 +157,7 @@ export function Contato() {
       <section className="shell pt-[clamp(28px,4vw,44px)] pb-[clamp(48px,7vw,90px)]">
         <Breadcrumb atual="Contato" />
 
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] items-start gap-[clamp(28px,4vw,64px)]">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] items-start gap-[clamp(28px,4vw,64px)]">
           {/* Coluna de contato */}
           <div>
             <h1 className="h-page">

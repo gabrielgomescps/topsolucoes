@@ -43,7 +43,7 @@ export function Home() {
   return (
     <main>
       {/* Hero */}
-      <section className="shell grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] items-center gap-[clamp(28px,4vw,56px)] pt-[clamp(36px,6vw,72px)] pb-[clamp(20px,4vw,40px)]">
+      <section className="shell grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] items-center gap-[clamp(28px,4vw,56px)] pt-[clamp(36px,6vw,72px)] pb-[clamp(20px,4vw,40px)]">
         <div>
           <p className="eyebrow mb-5">Poda · Jardinagem · Áreas verdes</p>
           <h1 className="h-hero">
@@ -98,6 +98,18 @@ export function Home() {
             <br />
             podador em ação · vertical 4:5
           </MediaSlot>
+
+          {/* Selo da marca: presença de identidade na área visual, em escala que
+              não disputa atenção com o título. Contraparte do card de
+              atendimento na diagonal oposta. */}
+          <img
+            src="/logo.png"
+            alt="Logotipo Top Soluções e Serviços"
+            width="512"
+            height="512"
+            decoding="async"
+            className="absolute top-[clamp(-20px,-2vw,-8px)] right-[clamp(-14px,-1.4vw,-4px)] size-[clamp(88px,13vw,132px)] rounded-full border border-line bg-ivory object-contain p-2.5 shadow-card"
+          />
           <div className="absolute bottom-[clamp(20px,4vw,44px)] left-[clamp(-16px,-2vw,0px)] max-w-[220px] rounded-xl border border-line bg-ivory px-5 py-4 shadow-card">
             <p className="font-display m-0 text-sm font-bold tracking-[0.06em] text-forest uppercase">
               Atendimento
@@ -133,7 +145,7 @@ export function Home() {
 
       {/* Serviços */}
       <section className="shell section-y">
-        <div className="mb-[clamp(32px,4vw,52px)] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-end gap-[clamp(20px,4vw,56px)]">
+        <div className="mb-[clamp(32px,4vw,52px)] grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] items-end gap-[clamp(20px,4vw,56px)]">
           <div>
             <p className="eyebrow mb-4">Nossos serviços</p>
             <h2 className="h-section">
@@ -169,7 +181,7 @@ export function Home() {
 
       {/* Método */}
       <section className="bg-deep text-white [border-radius:0_clamp(40px,10vw,140px)_0_0]">
-        <div className="shell grid grid-cols-[repeat(auto-fit,minmax(310px,1fr))] items-center gap-[clamp(32px,5vw,72px)] py-[clamp(56px,8vw,104px)]">
+        <div className="shell grid grid-cols-[repeat(auto-fit,minmax(min(310px,100%),1fr))] items-center gap-[clamp(32px,5vw,72px)] py-[clamp(56px,8vw,104px)]">
           <div>
             <p className="eyebrow eyebrow-on-dark mb-4">
               Por que a Top Soluções
@@ -248,7 +260,7 @@ export function Home() {
       {/* Antes e depois — reservado para material real do cliente */}
       <section className="border-y border-line bg-sage-light">
         <div className="shell py-[clamp(56px,8vw,100px)]">
-          <div className="mb-[clamp(28px,4vw,44px)] grid grid-cols-[repeat(auto-fit,minmax(290px,1fr))] items-end gap-[clamp(20px,4vw,52px)]">
+          <div className="mb-[clamp(28px,4vw,44px)] grid grid-cols-[repeat(auto-fit,minmax(min(290px,100%),1fr))] items-end gap-[clamp(20px,4vw,52px)]">
             <div>
               <p className="eyebrow mb-4">Trabalhos realizados</p>
               <h2 className="h-block">Antes e depois</h2>

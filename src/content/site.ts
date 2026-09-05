@@ -8,8 +8,9 @@
 
 export const EMPRESA = {
   nome: 'Top Soluções e Serviços',
+  /** Versão curta para telas estreitas, onde o nome completo não cabe. */
+  nomeCurto: 'Top Soluções',
   nomeCompleto: 'Top Soluções e Serviços',
-  sigla: 'TS',
   tagline: 'Poda & Jardinagem',
   descricao:
     'Poda de árvores, jardinagem e manutenção de áreas verdes para residências, condomínios e empresas.',

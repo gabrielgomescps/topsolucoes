@@ -23,7 +23,7 @@ export function Servicos() {
       <section className="border-b border-line bg-sage-light">
         <div className="shell pt-[clamp(28px,4vw,44px)] pb-[clamp(46px,6vw,80px)]">
           <Breadcrumb atual="Serviços" />
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-end gap-[clamp(24px,4vw,56px)]">
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] items-end gap-[clamp(24px,4vw,56px)]">
             <h1 className="h-page">
               Serviços de poda,
               <br />
@@ -93,7 +93,7 @@ export function Servicos() {
 
       {/* Coqueiros e palmeiras */}
       <section className="bg-deep text-white">
-        <div className="shell section-y-sm grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(28px,4vw,56px)]">
+        <div className="shell section-y-sm grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-[clamp(28px,4vw,56px)]">
           <div>
             <p className="eyebrow eyebrow-on-dark mb-3.5">
               Coqueiros e palmeiras

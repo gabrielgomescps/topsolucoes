@@ -32,9 +32,15 @@ export function Footer() {
       <div className="shell grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-[clamp(28px,4vw,52px)] pt-[clamp(44px,6vw,76px)] pb-7">
         <div>
           <div className="flex items-center gap-[11px]">
-            <span className="font-display flex size-9 items-center justify-center rounded-lg bg-forest text-base font-extrabold text-white">
-              {EMPRESA.sigla}
-            </span>
+            <img
+              src="/logo-marca.png"
+              alt=""
+              width="160"
+              height="160"
+              loading="lazy"
+              decoding="async"
+              className="size-11 shrink-0 object-contain"
+            />
             <strong className="font-display text-[17px] font-extrabold tracking-[0.03em] text-white uppercase">
               {EMPRESA.nome}
             </strong>

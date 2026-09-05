@@ -49,7 +49,7 @@ export function CtaBand({
 
   return (
     <section className="bg-forest text-white">
-      <div className="shell grid grid-cols-[repeat(auto-fit,minmax(290px,1fr))] items-center gap-[clamp(28px,4vw,56px)] py-[clamp(52px,7vw,96px)]">
+      <div className="shell grid grid-cols-[repeat(auto-fit,minmax(min(290px,100%),1fr))] items-center gap-[clamp(28px,4vw,56px)] py-[clamp(52px,7vw,96px)]">
         <div>
           <h2 className="h-section">{titulo}</h2>
           {texto && (
