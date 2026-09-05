@@ -9,7 +9,7 @@ export function NotFound() {
   )
 
   return (
-    <main className="shell flex min-h-[52vh] flex-col justify-center py-[clamp(56px,8vw,104px)]">
+    <main tabIndex={-1} className="shell flex min-h-[52vh] flex-col justify-center py-[clamp(56px,8vw,104px)]">
       <p className="eyebrow mb-4">Erro 404</p>
       <h1 className="h-section max-w-[18ch]">
         Esta página não existe

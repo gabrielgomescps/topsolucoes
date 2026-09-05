@@ -91,7 +91,7 @@ export function Home() {
   }
 
   return (
-    <main>
+    <main tabIndex={-1}>
       {/* Hero */}
       <section className="shell grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] items-center gap-[clamp(28px,4vw,56px)] pt-[clamp(36px,6vw,72px)] pb-[clamp(20px,4vw,40px)]">
         <div>

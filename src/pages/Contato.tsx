@@ -36,6 +36,30 @@ const ORDEM: (keyof DadosOrcamento)[] = [
   'mensagem',
 ]
 
+/**
+ * Mensagem de erro de um campo.
+ *
+ * Precisa viver fora do componente da página: declarada dentro do render, o
+ * React trataria cada render como um tipo novo e remontaria o <span> a cada
+ * tecla — o nó apontado por `aria-describedby` mudaria embaixo do leitor de
+ * tela, que pode deixar de anunciar o erro.
+ */
+function Erro({
+  campo,
+  erros,
+}: {
+  campo: keyof DadosOrcamento
+  erros: ErrosOrcamento
+}) {
+  const texto = erros[campo]
+  if (!texto) return null
+  return (
+    <span id={`erro-${campo}`} className="text-[13px] text-danger">
+      {texto}
+    </span>
+  )
+}
+
 function CartaoContato({
   rotulo,
   valor,
@@ -142,18 +166,8 @@ export function Contato() {
     className: 'field',
   })
 
-  function Erro({ campo }: { campo: keyof DadosOrcamento }) {
-    const texto = erro(campo)
-    if (!texto) return null
-    return (
-      <span id={`erro-${campo}`} className="text-[13px] text-danger">
-        {texto}
-      </span>
-    )
-  }
-
   return (
-    <main>
+    <main tabIndex={-1}>
       <section className="shell pt-[clamp(28px,4vw,44px)] pb-[clamp(48px,7vw,90px)]">
         <Breadcrumb atual="Contato" />
 
@@ -229,7 +243,7 @@ export function Contato() {
                 placeholder="Seu nome completo"
                 {...props('nome')}
               />
-              <Erro campo="nome" />
+              <Erro campo="nome" erros={erros} />
             </label>
 
             <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4">
@@ -242,7 +256,7 @@ export function Contato() {
                   placeholder="(00) 00000-0000"
                   {...props('telefone')}
                 />
-                <Erro campo="telefone" />
+                <Erro campo="telefone" erros={erros} />
               </label>
               <label className="flex flex-col gap-[7px]">
                 <span className="field-label">E-mail</span>
@@ -252,7 +266,7 @@ export function Contato() {
                   placeholder="seu@email.com"
                   {...props('email')}
                 />
-                <Erro campo="email" />
+                <Erro campo="email" erros={erros} />
               </label>
             </div>
 
@@ -265,7 +279,7 @@ export function Contato() {
                     <option key={opcao}>{opcao}</option>
                   ))}
                 </select>
-                <Erro campo="servico" />
+                <Erro campo="servico" erros={erros} />
               </label>
               <label className="flex flex-col gap-[7px]">
                 <span className="field-label">Porte da árvore</span>
@@ -285,7 +299,7 @@ export function Contato() {
                 placeholder="Onde é o serviço"
                 {...props('cidade')}
               />
-              <Erro campo="cidade" />
+              <Erro campo="cidade" erros={erros} />
             </label>
 
             <label className="flex flex-col gap-[7px]">
@@ -296,7 +310,7 @@ export function Contato() {
                 {...props('mensagem')}
                 className="field resize-y leading-[1.55]"
               />
-              <Erro campo="mensagem" />
+              <Erro campo="mensagem" erros={erros} />
             </label>
 
             <button

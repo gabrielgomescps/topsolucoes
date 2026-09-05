@@ -18,7 +18,7 @@ export function Servicos() {
   )
 
   return (
-    <main>
+    <main tabIndex={-1}>
       {/* Cabeçalho da página */}
       <section className="border-b border-line bg-sage-light">
         <div className="shell pt-[clamp(28px,4vw,44px)] pb-[clamp(46px,6vw,80px)]">

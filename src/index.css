@@ -84,6 +84,33 @@
     outline-offset: 3px;
   }
 
+  /*
+   * O <main> recebe foco por código a cada troca de rota (ver App.tsx). Como
+   * ninguém chega nele pelo Tab, o contorno só apareceria fora de hora.
+   */
+  main:focus {
+    outline: none;
+  }
+
+  /* Link de pulo: fora da tela até receber foco pelo teclado. */
+  .skip-link {
+    position: fixed;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+  }
+
+  .skip-link:focus {
+    left: 12px;
+    top: 12px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: var(--color-forest);
+    color: var(--color-ivory);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
   summary {
     list-style: none;
   }

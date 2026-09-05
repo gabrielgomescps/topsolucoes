@@ -14,13 +14,18 @@ import { IconeWhatsapp } from './IconeWhatsapp'
 export function WhatsappFab() {
   const { pathname } = useLocation()
   const [oculto, setOculto] = useState(false)
+  const [rotaAnterior, setRotaAnterior] = useState('')
+
+  // A página nova começa com o botão visível: os alvos da rota anterior já
+  // saíram da tela. Ajustar aqui, e não no efeito, evita o render em cascata.
+  if (rotaAnterior !== pathname) {
+    setRotaAnterior(pathname)
+    setOculto(false)
+  }
 
   useEffect(() => {
     const alvos = document.querySelectorAll('[data-oculta-whatsapp-fab]')
-    if (alvos.length === 0) {
-      setOculto(false)
-      return
-    }
+    if (alvos.length === 0) return
 
     const observer = new IntersectionObserver((entradas) => {
       setOculto(entradas.some((entrada) => entrada.isIntersecting))

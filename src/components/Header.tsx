@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router'
 import { CONTATO, EMPRESA } from '../content/site'
 import { WA_ORCAMENTO } from '../lib/whatsapp'
@@ -49,10 +49,16 @@ function linkClasses({ isActive }: { isActive: boolean }) {
 
 export function Header() {
   const [aberto, setAberto] = useState(false)
+  const [rotaAnterior, setRotaAnterior] = useState('')
   const { pathname } = useLocation()
 
   // Navegar fecha o menu — sem isso o painel fica aberto sobre a página nova.
-  useEffect(() => setAberto(false), [pathname])
+  // Ajustar durante o render (e não num efeito) evita o render extra em que o
+  // painel apareceria aberto sobre a página nova antes de fechar.
+  if (rotaAnterior !== pathname) {
+    setRotaAnterior(pathname)
+    setAberto(false)
+  }
 
   return (
     <header className="sticky top-0 z-[60] border-b border-line bg-ivory-header/95 backdrop-blur-[10px]">
