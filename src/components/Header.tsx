@@ -77,13 +77,6 @@ export function Header() {
           ))}
         </nav>
 
-        <a
-          href={`tel:${CONTATO.telefoneE164}`}
-          className="font-display hidden py-2 text-[15px] font-bold tracking-[0.04em] whitespace-nowrap text-forest lg:block"
-        >
-          {CONTATO.telefoneExibicao}
-        </a>
-
         <BotaoWhatsappCirculo className="hidden lg:inline-flex" />
 
         <a
