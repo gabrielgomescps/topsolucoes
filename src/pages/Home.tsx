@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router'
 import { CtaBand } from '../components/CtaBand'
 import { Faq, type ItemFaq } from '../components/Faq'
@@ -39,6 +40,29 @@ export function Home() {
     'Top Soluções e Serviços — Poda de árvores, jardinagem e áreas verdes',
     'Poda de árvores de pequeno, médio e grande porte, remoção, jardinagem, paisagismo e manutenção de áreas verdes. Orçamento sem compromisso pelo WhatsApp.'
   )
+
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  /**
+   * O vídeo do hero roda sozinho, mas quem pediu menos movimento no sistema
+   * fica só com o quadro parado. O `autoPlay` no elemento garante que ele
+   * funcione mesmo sem JS; aqui só desligamos quando é o caso.
+   */
+  useEffect(() => {
+    const consulta = window.matchMedia?.('(prefers-reduced-motion: reduce)')
+    if (!consulta) return
+
+    const aplicar = () => {
+      const video = videoRef.current
+      if (!video) return
+      if (consulta.matches) video.pause()
+      else video.play().catch(() => {})
+    }
+
+    aplicar()
+    consulta.addEventListener('change', aplicar)
+    return () => consulta.removeEventListener('change', aplicar)
+  }, [])
 
   return (
     <main>
@@ -93,11 +117,18 @@ export function Home() {
         </div>
 
         <div className="relative min-w-0">
-          <MediaSlot ratio="4 / 5" className="overflow-hidden !p-5">
-            Foto principal
-            <br />
-            podador em ação · vertical 4:5
-          </MediaSlot>
+          <video
+            ref={videoRef}
+            className="aspect-[4/5] w-full rounded-xl bg-sage-tint object-cover"
+            poster="/hero-podador.jpg"
+            src="/hero-podador.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label="Podador da equipe em ação: capacete, cinto de segurança e motosserra durante a poda de uma árvore de grande porte."
+          />
 
           {/* Selo da marca: presença de identidade na área visual, em escala que
               não disputa atenção com o título. Contraparte do card de
@@ -105,8 +136,8 @@ export function Home() {
           <img
             src="/logo.png"
             alt="Logotipo Top Soluções e Serviços"
-            width="512"
-            height="512"
+            width="352"
+            height="352"
             decoding="async"
             className="absolute top-[clamp(-20px,-2vw,-8px)] right-[clamp(-14px,-1.4vw,-4px)] size-[clamp(88px,13vw,132px)] rounded-full border border-line bg-ivory object-contain p-2.5 shadow-card"
           />
