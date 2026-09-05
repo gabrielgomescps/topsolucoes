@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router'
 import { CtaBand } from '../components/CtaBand'
 import { Faq, type ItemFaq } from '../components/Faq'
@@ -42,27 +42,53 @@ export function Home() {
   )
 
   const videoRef = useRef<HTMLVideoElement>(null)
+  const pausaManual = useRef(false)
+  const [tocando, setTocando] = useState(true)
 
   /**
-   * O vídeo do hero roda sozinho, mas quem pediu menos movimento no sistema
-   * fica só com o quadro parado. O `autoPlay` no elemento garante que ele
-   * funcione mesmo sem JS; aqui só desligamos quando é o caso.
+   * O autoplay só é liberado com o vídeo mudo — e alguns navegadores exigem
+   * que isso esteja no elemento, não apenas no atributo. Outros recusam o
+   * play() antes de haver quadro pronto, daí a nova tentativa no `canplay`.
+   *
+   * O navegador também suspende a mídia quando a página sai de vista (outra
+   * aba, janela minimizada) e não retoma sozinho: sem o `visibilitychange`
+   * abaixo, o vídeo fica congelado ao voltar. Só não retomamos quando a pausa
+   * partiu de quem está assistindo, pelo botão.
+   *
+   * O movimento fica sob controle pelo botão de pausa em vez de desligarmos o
+   * vídeo por conta própria em "reduzir movimento" — do contrário ele nunca
+   * rodaria nessas máquinas.
    */
   useEffect(() => {
-    const consulta = window.matchMedia?.('(prefers-reduced-motion: reduce)')
-    if (!consulta) return
+    const video = videoRef.current
+    if (!video) return
 
-    const aplicar = () => {
-      const video = videoRef.current
-      if (!video) return
-      if (consulta.matches) video.pause()
-      else video.play().catch(() => {})
+    video.muted = true
+    const tentarTocar = () => {
+      if (!pausaManual.current) void video.play().catch(() => {})
     }
 
-    aplicar()
-    consulta.addEventListener('change', aplicar)
-    return () => consulta.removeEventListener('change', aplicar)
+    tentarTocar()
+    video.addEventListener('canplay', tentarTocar)
+    document.addEventListener('visibilitychange', tentarTocar)
+    return () => {
+      video.removeEventListener('canplay', tentarTocar)
+      document.removeEventListener('visibilitychange', tentarTocar)
+    }
   }, [])
+
+  function alternarVideo() {
+    const video = videoRef.current
+    if (!video) return
+
+    if (video.paused) {
+      pausaManual.current = false
+      void video.play().catch(() => {})
+    } else {
+      pausaManual.current = true
+      video.pause()
+    }
+  }
 
   return (
     <main>
@@ -126,9 +152,31 @@ export function Home() {
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
+            onPlay={() => setTocando(true)}
+            onPause={() => setTocando(false)}
             aria-label="Podador da equipe em ação: capacete, cinto de segurança e motosserra durante a poda de uma árvore de grande porte."
           />
+
+          <button
+            type="button"
+            onClick={alternarVideo}
+            aria-label={tocando ? 'Pausar vídeo' : 'Reproduzir vídeo'}
+            className="absolute top-3 left-3 flex size-9 items-center justify-center rounded-full bg-forest/65 text-white backdrop-blur-[2px] transition-colors hover:bg-forest"
+          >
+            <svg
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              aria-hidden="true"
+              className="size-3.5"
+            >
+              {tocando ? (
+                <path d="M4.6 2.4h2.3v11.2H4.6zm4.5 0h2.3v11.2H9.1z" />
+              ) : (
+                <path d="M4.8 2.3 13 8l-8.2 5.7z" />
+              )}
+            </svg>
+          </button>
 
           {/* Selo da marca: presença de identidade na área visual, em escala que
               não disputa atenção com o título. Contraparte do card de
