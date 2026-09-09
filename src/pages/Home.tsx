@@ -302,14 +302,15 @@ export function Home() {
           <div className="grid min-w-0 grid-cols-2 gap-3">
             <Foto
               base="/equipe-em-servico"
-              larguras={[480, 672, 894]}
+              larguras={[480, 720, 1019]}
               ratio="16 / 10"
-              /* Medido: 39–43vw enquanto a seção tem duas colunas (>=885px) e
-                 78–87vw depois que ela colapsa para uma. Os tetos arredondam
-                 para cima — subestimar aqui deixaria a foto borrada em tela
-                 retina. */
-              sizes="(min-width: 900px) 44vw, 92vw"
-              alt="Podador da equipe cortando um galho de grande porte com motosserra, preso por cordas e usando capacete, luvas e cinto de segurança."
+              /* Medido no navegador: a seção vira uma coluna só entre 705px
+                 (92vw) e 715px (43,5vw). O corte fica em 720px, logo acima da
+                 virada, para o erro cair sempre no lado seguro — subestimar
+                 aqui faria o navegador baixar uma variante pequena demais e a
+                 foto sairia borrada em tela retina. */
+              sizes="(min-width: 720px) 44vw, 92vw"
+              alt="Dois profissionais da equipe avaliando uma árvore de grande porte antes da poda: um deles aponta para a copa enquanto anota na prancheta, com cordas, capacetes e o restante do equipamento preparados no gramado."
               className="col-span-2"
             />
             <MediaSlot ratio="1 / 1" dark className="!p-3">
