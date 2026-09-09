@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router'
 import { CtaBand } from '../components/CtaBand'
 import { Faq, type ItemFaq } from '../components/Faq'
+import { Foto } from '../components/Foto'
 import { MediaSlot } from '../components/MediaSlot'
 import {
   COMO_FUNCIONA,
@@ -299,9 +300,18 @@ export function Home() {
           </div>
 
           <div className="grid min-w-0 grid-cols-2 gap-3">
-            <MediaSlot ratio="16 / 10" dark className="col-span-2">
-              Equipe em serviço · 16:10
-            </MediaSlot>
+            <Foto
+              base="/equipe-em-servico"
+              larguras={[480, 672, 894]}
+              ratio="16 / 10"
+              /* Medido: 39–43vw enquanto a seção tem duas colunas (>=885px) e
+                 78–87vw depois que ela colapsa para uma. Os tetos arredondam
+                 para cima — subestimar aqui deixaria a foto borrada em tela
+                 retina. */
+              sizes="(min-width: 900px) 44vw, 92vw"
+              alt="Podador da equipe cortando um galho de grande porte com motosserra, preso por cordas e usando capacete, luvas e cinto de segurança."
+              className="col-span-2"
+            />
             <MediaSlot ratio="1 / 1" dark className="!p-3">
               Escalada
             </MediaSlot>

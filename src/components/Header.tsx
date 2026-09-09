@@ -33,7 +33,9 @@ function Marca() {
           <span className="md:hidden">{EMPRESA.nomeCurto}</span>
           <span className="hidden md:inline">{EMPRESA.nome}</span>
         </strong>
-        <span className="mt-[3px] text-[9.5px] tracking-[0.22em] text-muted uppercase">
+        {/* Some abaixo de 360px: com 0,22em de espaçamento a tagline passa de
+            190px e empurra o botão do menu para fora da tela. */}
+        <span className="mt-[3px] hidden text-[9.5px] tracking-[0.22em] text-muted uppercase min-[360px]:block">
           {EMPRESA.tagline}
         </span>
       </span>
