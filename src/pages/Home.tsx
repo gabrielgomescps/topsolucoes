@@ -321,7 +321,7 @@ export function Home() {
                  depois que ela colapsa, na mesma virada de 720px da foto
                  acima. Os tetos arredondam para cima. */
               sizes="(min-width: 720px) 21vw, 45vw"
-              alt="Profissionais de capacete e cinto de segurança preparando a subida em uma árvore de grande porte, com as cordas posicionadas e a área isolada por fita e cones."
+              alt="Três profissionais de capacete e cinto de segurança preparando a subida em uma árvore de grande porte: um organiza as cordas no chão, outro avalia a copa e o terceiro tensiona a corda de acesso, com a área isolada por fita e cones."
             />
             <MediaSlot ratio="1 / 1" dark className="!p-3">
               Jardim pronto
