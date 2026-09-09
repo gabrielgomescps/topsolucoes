@@ -313,9 +313,16 @@ export function Home() {
               alt="Dois profissionais da equipe avaliando uma árvore de grande porte antes da poda: um deles aponta para a copa enquanto anota na prancheta, com cordas, capacetes e o restante do equipamento preparados no gramado."
               className="col-span-2"
             />
-            <MediaSlot ratio="1 / 1" dark className="!p-3">
-              Escalada
-            </MediaSlot>
+            <Foto
+              base="/escalada"
+              larguras={[320, 560, 816]}
+              ratio="1 / 1"
+              /* Medido: 19–21vw enquanto a seção tem duas colunas e 42–44vw
+                 depois que ela colapsa, na mesma virada de 720px da foto
+                 acima. Os tetos arredondam para cima. */
+              sizes="(min-width: 720px) 21vw, 45vw"
+              alt="Profissionais de capacete e cinto de segurança preparando a subida em uma árvore de grande porte, com as cordas posicionadas e a área isolada por fita e cones."
+            />
             <MediaSlot ratio="1 / 1" dark className="!p-3">
               Jardim pronto
             </MediaSlot>
