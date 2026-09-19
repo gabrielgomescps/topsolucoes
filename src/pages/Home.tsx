@@ -323,9 +323,15 @@ export function Home() {
               sizes="(min-width: 720px) 21vw, 45vw"
               alt="Três profissionais de capacete e cinto de segurança preparando a subida em uma árvore de grande porte: um organiza as cordas no chão, outro avalia a copa e o terceiro tensiona a corda de acesso, com a área isolada por fita e cones."
             />
-            <MediaSlot ratio="1 / 1" dark className="!p-3">
-              Jardim pronto
-            </MediaSlot>
+            <Foto
+              base="/jardim-pronto"
+              larguras={[320, 560, 816]}
+              ratio="1 / 1"
+              /* Mesma virada de 720px das duas fotos acima — a seção usa
+                 19–21vw com duas colunas e 42–44vw depois que colapsa. */
+              sizes="(min-width: 720px) 21vw, 45vw"
+              alt="Árvore de grande porte podada, com os cortes visíveis nos galhos e a copa já reequilibrada, em um jardim residencial ao entardecer."
+            />
           </div>
         </div>
       </section>
